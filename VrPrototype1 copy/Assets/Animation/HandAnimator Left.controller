@@ -160,7 +160,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: HandAnimator
+  m_Name: HandAnimator Left
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: Trigger
@@ -250,7 +250,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: -6682302678368645178}
-    m_Position: {x: 268.5, y: 123.5, z: 0}
+    m_Position: {x: 270, y: 120, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1446147387363997514}
     m_Position: {x: 520, y: 120, z: 0}
