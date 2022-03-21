@@ -1,43 +1,44 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-[RequireComponent(typeof(Animator))]
+using UnityEngine.XR.Interaction.Toolkit;
 public class Hand : MonoBehaviour
 {
-    //Animation
-    Animator animator;
-    SkinnedMeshRenderer mesh;
-    private float gripTarget;
-    private float triggerTarget;
-    private float gripCurrent;
-    private float triggerCurrent;
-    public float animationSpeed;
-    private string animatorGripParam = "Grip";
-    private string animatorTriggerParam = "Trigger";
-
     //Physics Movement
-    [SerializeField] private GameObject followObject;
+    [Space]
+    [SerializeField] private ActionBasedController controller;
     [SerializeField] private float followSpeed = 30f;
     [SerializeField] private float rotateSpeed = 100f;
+    [Space]
     [SerializeField] private Vector3 positionOffset;
     [SerializeField] private Vector3 rotationOffset;
+    [Space]
+    [SerializeField] private Transform palm;
+    [SerializeField] private float reachDistance = 0.1f, joinDistance = 0.05f;
+    [SerializeField] private LayerMask grabbableLayer;
+
     private Transform _followTarget;
     private Rigidbody _body;
+
+    private bool _isGrabbing;
+    private GameObject _heldObject;
+    private Transform _grabPoint;
+    private FixedJoint _joint1, _joint2;
 
     // Start is called before the first frame update
     void Start()
     {
-        //Animation
-        animator = GetComponent<Animator>();
-        mesh = GetComponentInChildren<SkinnedMeshRenderer>();
-
         //Physics Movement
-        _followTarget = followObject.transform;
+        _followTarget = controller.gameObject.transform;
         _body = GetComponent<Rigidbody>();
         _body.collisionDetectionMode = CollisionDetectionMode.Continuous;
         _body.interpolation = RigidbodyInterpolation.Interpolate;
         _body.mass = 20f;
+        _body.maxAngularVelocity = 20f;
+
+        //INputs Setup
+        controller.selectAction.action.started += Grab;
+        controller.selectAction.action.cancelled += Release;
 
         //Teleport Hands
         _body.position = _followTarget.position;
@@ -47,14 +48,13 @@ public class Hand : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        AnimateHand();
         PhysicsMove();
     }
 
     private void PhysicsMove()
     {
         //Postition
-        var postionWithOffset = _followTarget.position + positionOffset;
+        var postionWithOffset = _followTarget.TransformPoint(positionOffset);
         var distance = Vector3.Distance(_followTarget.position, transform.position);
         _body.velocity = (_followTarget.position - transform.position).normalized * (followSpeed * distance);
         //Rotation
@@ -64,34 +64,25 @@ public class Hand : MonoBehaviour
         _body.angularVelocity = axis * (angle * Mathf.Deg2Rad * rotateSpeed);
     }
 
-    internal void SetGrip(float v)
+    private void Grab(InputAction.CallbackContext context)
     {
-        gripTarget = v;
-    }
-    internal void SetTrigger(float v)
-    {
-        triggerTarget = v;
-    }
+        if(_isGrabbing || _heldObject) return;
+        
+        Collider[] grabbableColliders = Physics.OverlapSphere(palm.position, reachDistance, grabbableLayer);
+        if (grabbableColliders.Length < 1) return;
 
-    void AnimateHand()
-    {
-        if (gripCurrent != gripTarget)
+        var objectToGrab = grabbableColliders[0].transform.gameObject;
+
+        var objectBody = objectToGrab.GetComponent<Rigidbody>();
+
+        if(objectBody != null)
         {
-            gripCurrent = Mathf.MoveTowards(gripCurrent, gripTarget, Time.deltaTime * animationSpeed
-    );
-            animator.SetFloat(animatorGripParam, gripCurrent);
+            _heldObject = objectBody.gameObject;
         }
-
-        if (triggerCurrent != triggerTarget)
+        else
         {
-            triggerCurrent = Mathf.MoveTowards(triggerCurrent, triggerTarget, Time.deltaTime * animationSpeed
-    );
-            animator.SetFloat(animatorTriggerParam, triggerCurrent);
+            objectBody = objectToGrab.GetComponentInParent<RigidBody>();
+            if
         }
-    }
-
-    public void ToggleVisibility()
-    {
-        mesh.enabled = !mesh.enabled;
     }
 }
