@@ -493,11 +493,27 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 100000, guid: 4f448b5566a8c0040a5975b43e1f5f84, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 4f448b5566a8c0040a5975b43e1f5f84, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 4f448b5566a8c0040a5975b43e1f5f84, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 100006, guid: 4f448b5566a8c0040a5975b43e1f5f84, type: 3}
       propertyPath: m_Name
       value: Wrench
       objectReference: {fileID: 0}
     - target: {fileID: 100006, guid: 4f448b5566a8c0040a5975b43e1f5f84, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 100008, guid: 4f448b5566a8c0040a5975b43e1f5f84, type: 3}
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
@@ -1929,6 +1945,28 @@ PrefabInstance:
       objectReference: {fileID: 40968909}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74fe063d9d0674bc4b21d08a245e06b0, type: 3}
+--- !u!114 &1499472600312028366 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1499472601223565747, guid: 74fe063d9d0674bc4b21d08a245e06b0, type: 3}
+  m_PrefabInstance: {fileID: 1499472600312028365}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1314590073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caff514de9b15ad48ab85dcff5508221, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1499472600312028367 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1499472601009199440, guid: 74fe063d9d0674bc4b21d08a245e06b0, type: 3}
+  m_PrefabInstance: {fileID: 1499472600312028365}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2039612824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caff514de9b15ad48ab85dcff5508221, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2865007814688847928
 Transform:
   m_ObjectHideFlags: 0
@@ -3132,6 +3170,14 @@ PrefabInstance:
       value: -1.871
       objectReference: {fileID: 0}
     - target: {fileID: 7387666041727479149, guid: b6a733a061819416d93b3021a1df258f, type: 3}
+      propertyPath: palm
+      value: 
+      objectReference: {fileID: 7387666042375921066}
+    - target: {fileID: 7387666041727479149, guid: b6a733a061819416d93b3021a1df258f, type: 3}
+      propertyPath: controller
+      value: 
+      objectReference: {fileID: 1499472600312028367}
+    - target: {fileID: 7387666041727479149, guid: b6a733a061819416d93b3021a1df258f, type: 3}
       propertyPath: rotateSpeed
       value: 300
       objectReference: {fileID: 0}
@@ -3146,6 +3192,10 @@ PrefabInstance:
     - target: {fileID: 7387666041727479149, guid: b6a733a061819416d93b3021a1df258f, type: 3}
       propertyPath: rotationOffset.z
       value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 7387666041727479149, guid: b6a733a061819416d93b3021a1df258f, type: 3}
+      propertyPath: grabbableLayer.m_Bits
+      value: 64
       objectReference: {fileID: 0}
     - target: {fileID: 7387666042300386480, guid: b6a733a061819416d93b3021a1df258f, type: 3}
       propertyPath: m_RootOrder
@@ -3196,6 +3246,14 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 7387666042687840387, guid: b6a733a061819416d93b3021a1df258f, type: 3}
+      propertyPath: palm
+      value: 
+      objectReference: {fileID: 7387666042375921065}
+    - target: {fileID: 7387666042687840387, guid: b6a733a061819416d93b3021a1df258f, type: 3}
+      propertyPath: controller
+      value: 
+      objectReference: {fileID: 1499472600312028366}
+    - target: {fileID: 7387666042687840387, guid: b6a733a061819416d93b3021a1df258f, type: 3}
       propertyPath: rotateSpeed
       value: 300
       objectReference: {fileID: 0}
@@ -3211,8 +3269,26 @@ PrefabInstance:
       propertyPath: rotationOffset.z
       value: -90
       objectReference: {fileID: 0}
+    - target: {fileID: 7387666042687840387, guid: b6a733a061819416d93b3021a1df258f, type: 3}
+      propertyPath: grabbableLayer.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 7658136757705953336, guid: b6a733a061819416d93b3021a1df258f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b6a733a061819416d93b3021a1df258f, type: 3}
+--- !u!4 &7387666042375921065 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9012345342479422602, guid: b6a733a061819416d93b3021a1df258f, type: 3}
+  m_PrefabInstance: {fileID: 7387666042375921064}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7387666042375921066 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5771460660815331647, guid: b6a733a061819416d93b3021a1df258f, type: 3}
+  m_PrefabInstance: {fileID: 7387666042375921064}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8327049399635606427
 Transform:
   m_ObjectHideFlags: 0
